@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Features — Farm Metrics</title>
+<meta name="description" content="A closer look at Farm Metrics' four modules: Precision Farming sensors, Blockchain traceability, AI recommendations, and Farm Management tools.">
+<link rel="canonical" href="https://www.farmmetrics.co.zw/features.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Features — Farm Metrics">
+<meta property="og:description" content="Precision Farming, Blockchain Traceability, AI Recommendations and Farm Management — how each module actually works.">
+<meta property="og:image" content="https://www.farmmetrics.co.zw/assets/images/og-image.svg">
+<meta property="og:url" content="https://www.farmmetrics.co.zw/features.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#2C7A47">
+<link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+<link rel="manifest" href="site.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/variables.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/layout.css">
+<link rel="stylesheet" href="css/components.css">
+<link rel="stylesheet" href="css/pages.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="index.html" class="brand" aria-label="Farm Metrics home">
+      <svg class="brand-logo" aria-hidden="true"><use href="assets/icons/sprite.svg#logo"></use></svg>
+      <span>Farm Metrics</span>
+    </a>
+    <nav class="main-nav" aria-label="Primary">
+      <ul>
+        <li><a href="features.html" aria-current="page">Features</a></li>
+        <li><a href="how-it-works.html">How It Works</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="blog/index.html">Blog</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="header-actions">
+      <button class="theme-toggle" type="button" aria-label="Toggle dark mode" aria-pressed="false">
+        <svg class="icon-moon" aria-hidden="true"><use href="assets/icons/sprite.svg#moon"></use></svg>
+        <svg class="icon-sun" aria-hidden="true"><use href="assets/icons/sprite.svg#sun"></use></svg>
+      </button>
+      <a href="dashboard.html" class="btn btn-ghost">Sign In</a>
+      <a href="contact.html" class="btn btn-primary">Book a Demo</a>
+      <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">
+        <svg class="icon-open" aria-hidden="true"><use href="assets/icons/sprite.svg#menu"></use></svg>
+        <svg class="icon-close" aria-hidden="true"><use href="assets/icons/sprite.svg#close"></use></svg>
+      </button>
+    </div>
+  </div>
+  <nav id="mobile-nav" class="mobile-nav" aria-label="Mobile">
+    <ul>
+      <li><a href="features.html">Features</a></li>
+      <li><a href="how-it-works.html">How It Works</a></li>
+      <li><a href="pricing.html">Pricing</a></li>
+      <li><a href="dashboard.html">Dashboard</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="blog/index.html">Blog</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="mobile-cta container">
+      <a href="dashboard.html" class="btn btn-ghost btn-block">Sign In</a>
+      <a href="contact.html" class="btn btn-primary btn-block">Book a Demo</a>
+    </div>
+  </nav>
+</header>
+
+<main id="main">
+
+  <section class="page-intro">
+    <div class="container container--narrow text-center">
+      <span class="badge badge-accent">What's inside</span>
+      <h1 class="mt-4">Four modules. One connected platform.</h1>
+      <p class="lead" style="margin-inline:auto">Farm Metrics isn't four separate tools bolted together — a single sensor reading can trigger an AI recommendation, update your inventory, and write a new block to the ledger, all in the same cycle.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="feature-row">
+        <div class="feature-row-media"><svg aria-hidden="true"><use href="assets/icons/sprite.svg#precision"></use></svg></div>
+        <div>
+          <span class="badge badge-accent">Module 1</span>
+          <h2 class="mt-2">Precision Farming</h2>
+          <p class="text-muted">Real-time environmental data from the field, without needing to walk it.</p>
+          <ul class="feature-row-list">
+            <li><svg aria-hidden="true"><use href="assets/icons/sprite.svg#check"></use></svg>Soil moisture, temperature, humidity and light readings update automatically from Arduino-based sensor nodes.</li>
+            <li><svg aria-hidden="true"><use href="assets/icons/sprite.svg#check"></use></svg>Data reaches the dashboard through a Raspberry Pi gateway, so logging continues even with patchy connectivity.</li>
+            <li><svg aria-hidden="true"><use href="assets/icons/sprite.svg#check"></use></svg>Set custom thresholds per field so you're alerted only when a reading actually needs attention.</li>
+            <li><svg aria-hidden="true"><use href="assets/icons/sprite.svg#check"></use></svg>Season-long history charts show how a field behaved over time, not just today.</li>
+          </ul>
+          <table class="spec-table">
+            <tbody>
+              <tr><th scope="row">Sensor types</th><td>Capacitive soil moisture, DHT22 temperature/humidity, LDR light sensor</td></tr>
+              <tr><th scope="row">Sample rate</th><td>Every 30 seconds by default, configurable per field</td></tr>
+              <tr><th scope="row">Gateway</th><td>Raspberry Pi 4, buffers locally up to 72 hours offline</td></tr>
+              <tr><th scope="row">Data retention</th><td>7 days (Free) &middot; 12 months (Pro) &middot; Unlimited (Enterprise)</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="feature-row is-reversed">
+        <div class="feature-row-media"><svg aria-hidden="true"><use href="assets/icons/sprite.svg#blockchain"></use></svg></div>
+        <div>
+          <span class="badge badge-sky">Module 2</span>
+          <h2 class="mt-2">Blockchain Traceability</h2>
+          <p class="text-muted">A record buyers and auditors can check for themselves.</p>
+          <ul class="feature-row-list">
+            <li><svg aria-hidden="true"><use href="assets/icons/sprite.svg#check"></use></svg>Every sensor batch, AI recommendation and inventory change is hashed and appended automatically — no manual entry.</li>
+            <li><svg aria-hidden="true"><use href="assets/icons/sprite.svg#check"></use></svg>Buyers can verify a batch's history without needing access to your internal systems.</li>
+            <li><svg aria-hidden="true"><use href="assets/icons/sprite.svg#check"></use></svg>Tampering with a past record breaks the hash chain immediately, so integrity issues surface on their own.</li>
+            <li><svg aria-hidden="true"><use href="assets/icons/sprite.svg#check"></use></svg>Exportable certificates of provenance for produce sold under a traceability claim.</li>
+          </ul>
+          <table class="spec-table">
+            <tbody>
+              <tr><th scope="row">Hashing algorithm</th><td>SHA-256</td></tr>
+              <tr><th scope="row">Ledger type</th><td>Permissioned, append-only</td></tr>
+              <tr><th scope="row">Verification</th><td>Public, read-only lookup per batch</td></tr>
+              <tr><th scope="row">Block interval</th><td>New block every logging cycle, or on demand</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="feature-row">
+        <div class="feature-row-media"><svg aria-hidden="true"><use href="assets/icons/sprite.svg#ai"></use></svg></div>
+        <div>
+          <span class="badge badge-accent">Module 3</span>
+          <h2 class="mt-2">AI Recommendations</h2>
+          <p class="text-muted">Guidance built from your field's own history, not a generic calendar.</p>
+          <ul class="feature-row-list">
+            <li><svg aria-hidden="true"><use href="assets/icons/sprite.svg#check"></use></svg>Recommendations are generated from your own sensor history and crop stage, not a one-size-fits-all schedule.</li>
+            <li><svg aria-hidden="true"><use href="assets/icons/sprite.svg#check"></use></svg>Each one is labelled by urgency — critical, warning, notice or optimal — so your team knows what to act on first.</li>
+            <li><svg aria-hidden="true"><use href="assets/icons/sprite.svg#check"></use></svg>Models improve as more seasons of local data accumulate on your farm.</li>
+            <li><svg aria-hidden="true"><use href="assets/icons/sprite.svg#check"></use></svg>Delivered in plain language, with the reasoning behind each recommendation one tap away.</li>
+          </ul>
+          <table class="spec-table">
+            <tbody>
+              <tr><th scope="row">Update frequency</th><td>Every 6 hours (Free) &middot; Hourly (Pro) &middot; Real-time (Enterprise)</td></tr>
+              <tr><th scope="row">Model inputs</th><td>Soil, weather, crop growth stage, historical yield</td></tr>
+              <tr><th scope="row">Output</th><td>Ranked recommendation list per field</td></tr>
+              <tr><th scope="row">Explainability</th><td>Reasoning summary attached to every recommendation</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="feature-row is-reversed">
+        <div class="feature-row-media"><svg aria-hidden="true"><use href="assets/icons/sprite.svg#management"></use></svg></div>
+        <div>
+          <span class="badge badge-earth">Module 4</span>
+          <h2 class="mt-2">Farm Management</h2>
+          <p class="text-muted">Inventory and finances in the same place as your field data.</p>
+          <ul class="feature-row-list">
+            <li><svg aria-hidden="true"><use href="assets/icons/sprite.svg#check"></use></svg>Track seed, fertiliser, pesticide and water stock levels without a separate spreadsheet.</li>
+            <li><svg aria-hidden="true"><use href="assets/icons/sprite.svg#check"></use></svg>Log expenses and revenue by field or by season to see real margins, not estimates.</li>
+            <li><svg aria-hidden="true"><use href="assets/icons/sprite.svg#check"></use></svg>Compare yield across fields and seasons to spot what's actually working.</li>
+            <li><svg aria-hidden="true"><use href="assets/icons/sprite.svg#check"></use></svg>Built-in categories for Zimbabwe's common crops — maize, soybean, tobacco and horticulture — from day one.</li>
+          </ul>
+          <table class="spec-table">
+            <tbody>
+              <tr><th scope="row">Inventory categories</th><td>Seed, fertiliser, pesticide, water, fuel</td></tr>
+              <tr><th scope="row">Financial reports</th><td>Revenue, expenses and net margin by field or season</td></tr>
+              <tr><th scope="row">Data export</th><td>CSV export (Pro and Enterprise)</td></tr>
+              <tr><th scope="row">Multi-user access</th><td>Role-based permissions (Pro and Enterprise)</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="cta-banner">
+        <h2>See these four modules working together</h2>
+        <p>The live dashboard demo uses the same cards described above, filled with simulated field data.</p>
+        <div class="btn-group" style="justify-content:center">
+          <a href="dashboard.html" class="btn btn-white btn-lg">Open the Dashboard</a>
+          <a href="pricing.html" class="btn btn-outline-white btn-lg">Compare Plans</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="index.html" class="brand">
+          <svg class="brand-logo" aria-hidden="true"><use href="assets/icons/sprite.svg#logo"></use></svg>
+          <span>Farm Metrics</span>
+        </a>
+        <p>Data-driven farming software for Zimbabwe — precision sensors, AI recommendations and blockchain traceability in one platform.</p>
+        <div class="footer-social">
+          <a href="https://x.com/farmmetrics" aria-label="Farm Metrics on X"><svg><use href="assets/icons/sprite.svg#social-x"></use></svg></a>
+          <a href="https://www.linkedin.com/company/farm-metrics" aria-label="Farm Metrics on LinkedIn"><svg><use href="assets/icons/sprite.svg#social-linkedin"></use></svg></a>
+          <a href="https://facebook.com/farmmetrics" aria-label="Farm Metrics on Facebook"><svg><use href="assets/icons/sprite.svg#social-facebook"></use></svg></a>
+          <a href="https://youtube.com/@farmmetrics" aria-label="Farm Metrics on YouTube"><svg><use href="assets/icons/sprite.svg#social-youtube"></use></svg></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Product</h4>
+        <ul>
+          <li><a href="features.html">Features</a></li>
+          <li><a href="how-it-works.html">How It Works</a></li>
+          <li><a href="pricing.html">Pricing</a></li>
+          <li><a href="dashboard.html">Live Dashboard</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="blog/index.html">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="about.html#careers">Careers</a></li>
+        </ul>
+      </div>
+      <div class="footer-col footer-newsletter">
+        <h4>Field notes</h4>
+        <p style="color:#C7DACD;font-size:var(--fs-sm)">Short, occasional emails on precision agriculture in Zimbabwe. No spam.</p>
+        <form data-newsletter-form>
+          <label class="visually-hidden" for="newsletter-email">Email address</label>
+          <input id="newsletter-email" type="email" name="email" placeholder="you@example.com" required>
+          <button type="submit" class="btn btn-primary">Join</button>
+        </form>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; <span data-year>2026</span> Farm Metrics (Private) Limited. All rights reserved.</p>
+      <ul>
+        <li><a href="legal/privacy.html">Privacy Policy</a></li>
+        <li><a href="legal/terms.html">Terms of Service</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<div class="cookie-banner" role="dialog" aria-label="Cookie notice">
+  <div class="cookie-banner-inner">
+    <p>We use a small number of cookies to keep this site working well and to understand which pages are useful. See our <a href="legal/privacy.html">Privacy Policy</a> for details.</p>
+    <div class="cookie-actions">
+      <button class="btn btn-ghost btn-sm cookie-decline" type="button">Decline</button>
+      <button class="btn btn-primary btn-sm cookie-accept" type="button">Accept</button>
+    </div>
+  </div>
+</div>
+
+<button class="back-to-top" type="button" aria-label="Back to top">
+  <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+</button>
+
+<div id="toast" class="toast" role="status" aria-live="polite">
+  <svg aria-hidden="true"><use href="assets/icons/sprite.svg#check"></use></svg>
+  <span class="toast-message">Done.</span>
+</div>
+
+<script src="js/main.js" defer></script>
+</body>
+</html>

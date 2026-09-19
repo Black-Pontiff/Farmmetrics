@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How It Works — Farm Metrics</title>
+<meta name="description" content="How Farm Metrics moves data from an Arduino sensor in your field to a Raspberry Pi gateway to the cloud and your dashboard — plus how security and the blockchain ledger work.">
+<link rel="canonical" href="https://www.farmmetrics.co.zw/how-it-works.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="How It Works — Farm Metrics">
+<meta property="og:description" content="Arduino to Raspberry Pi to cloud to dashboard — the architecture behind Farm Metrics, explained in plain language.">
+<meta property="og:image" content="https://www.farmmetrics.co.zw/assets/images/og-image.svg">
+<meta property="og:url" content="https://www.farmmetrics.co.zw/how-it-works.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#2C7A47">
+<link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+<link rel="manifest" href="site.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/variables.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/layout.css">
+<link rel="stylesheet" href="css/components.css">
+<link rel="stylesheet" href="css/pages.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="index.html" class="brand" aria-label="Farm Metrics home">
+      <svg class="brand-logo" aria-hidden="true"><use href="assets/icons/sprite.svg#logo"></use></svg>
+      <span>Farm Metrics</span>
+    </a>
+    <nav class="main-nav" aria-label="Primary">
+      <ul>
+        <li><a href="features.html">Features</a></li>
+        <li><a href="how-it-works.html" aria-current="page">How It Works</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="blog/index.html">Blog</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="header-actions">
+      <button class="theme-toggle" type="button" aria-label="Toggle dark mode" aria-pressed="false">
+        <svg class="icon-moon" aria-hidden="true"><use href="assets/icons/sprite.svg#moon"></use></svg>
+        <svg class="icon-sun" aria-hidden="true"><use href="assets/icons/sprite.svg#sun"></use></svg>
+      </button>
+      <a href="dashboard.html" class="btn btn-ghost">Sign In</a>
+      <a href="contact.html" class="btn btn-primary">Book a Demo</a>
+      <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">
+        <svg class="icon-open" aria-hidden="true"><use href="assets/icons/sprite.svg#menu"></use></svg>
+        <svg class="icon-close" aria-hidden="true"><use href="assets/icons/sprite.svg#close"></use></svg>
+      </button>
+    </div>
+  </div>
+  <nav id="mobile-nav" class="mobile-nav" aria-label="Mobile">
+    <ul>
+      <li><a href="features.html">Features</a></li>
+      <li><a href="how-it-works.html">How It Works</a></li>
+      <li><a href="pricing.html">Pricing</a></li>
+      <li><a href="dashboard.html">Dashboard</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="blog/index.html">Blog</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="mobile-cta container">
+      <a href="dashboard.html" class="btn btn-ghost btn-block">Sign In</a>
+      <a href="contact.html" class="btn btn-primary btn-block">Book a Demo</a>
+    </div>
+  </nav>
+</header>
+
+<main id="main">
+
+  <section class="page-intro">
+    <div class="container container--narrow text-center">
+      <span class="badge badge-accent">Under the hood</span>
+      <h1 class="mt-4">From a sensor in the soil to a screen in your hand</h1>
+      <p class="lead" style="margin-inline:auto">Farm Metrics runs on a three-tier pipeline — edge, fog and cloud — so it keeps working even where connectivity is unreliable.</p>
+    </div>
+  </section>
+
+  <!-- ============ ARCHITECTURE DIAGRAM ============ -->
+  <section aria-labelledby="arch-heading">
+    <div class="container">
+      <div class="section-head section-head--center">
+        <h2 id="arch-heading">The data pipeline</h2>
+        <p>Arduino &rarr; Raspberry Pi &rarr; Cloud API &rarr; Dashboard</p>
+      </div>
+      <div class="card" style="padding:var(--space-6);overflow-x:auto">
+        <svg class="arch-diagram" viewBox="0 0 980 260" role="img" aria-labelledby="archTitle archDesc" style="min-width:720px">
+          <title id="archTitle">Farm Metrics data pipeline diagram</title>
+          <desc id="archDesc">An Arduino sensor node sends readings to a Raspberry Pi gateway, which forwards them to the Farm Metrics Cloud API, which powers the dashboard you view on a phone or laptop.</desc>
+          <defs>
+            <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="7" refY="5" orient="auto">
+              <path d="M0,0 L10,5 L0,10 Z" fill="#2C7A47"/>
+            </marker>
+          </defs>
+          <line x1="150" y1="130" x2="330" y2="130" stroke="#2C7A47" stroke-width="2.5" marker-end="url(#arrowhead)"/>
+          <line x1="440" y1="130" x2="620" y2="130" stroke="#2C7A47" stroke-width="2.5" marker-end="url(#arrowhead)"/>
+          <line x1="730" y1="130" x2="900" y2="130" stroke="#2C7A47" stroke-width="2.5" marker-end="url(#arrowhead)"/>
+
+          <g>
+            <rect x="20" y="70" width="130" height="120" rx="14" fill="#EAF9F0" stroke="#2C7A47" stroke-width="1.5"/>
+            <use href="assets/icons/sprite.svg#cpu" x="65" y="90" width="40" height="40" color="#1F5C36"/>
+            <text x="85" y="150" text-anchor="middle" font-family="Poppins, Arial, sans-serif" font-weight="700" font-size="15" fill="#1F5C36">Arduino</text>
+            <text x="85" y="170" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="12" fill="#4C6156">Edge sensor node</text>
+          </g>
+
+          <g>
+            <rect x="330" y="70" width="130" height="120" rx="14" fill="#E7F1FB" stroke="#0275D8" stroke-width="1.5"/>
+            <use href="assets/icons/sprite.svg#wifi" x="375" y="90" width="40" height="40" color="#0C4A87"/>
+            <text x="395" y="150" text-anchor="middle" font-family="Poppins, Arial, sans-serif" font-weight="700" font-size="15" fill="#0C4A87">Raspberry Pi</text>
+            <text x="395" y="170" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="12" fill="#4C6156">Fog gateway</text>
+          </g>
+
+          <g>
+            <rect x="620" y="70" width="130" height="120" rx="14" fill="#F3EDE3" stroke="#8B6F47" stroke-width="1.5"/>
+            <use href="assets/icons/sprite.svg#cloud" x="665" y="92" width="40" height="36" color="#8B6F47"/>
+            <text x="685" y="150" text-anchor="middle" font-family="Poppins, Arial, sans-serif" font-weight="700" font-size="15" fill="#5C4A2F">Cloud API</text>
+            <text x="685" y="170" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="12" fill="#4C6156">AI + blockchain</text>
+          </g>
+
+          <g>
+            <rect x="900" y="70" width="60" height="120" rx="14" fill="#2C7A47" opacity="0" />
+          </g>
+          <g>
+            <rect x="800" y="70" width="160" height="120" rx="14" fill="#FFFFFF" stroke="#2C7A47" stroke-width="1.5" transform="translate(-90,0)"/>
+          </g>
+          <g>
+            <rect x="860" y="70" width="110" height="120" rx="14" fill="#FFFFFF" stroke="#2C7A47" stroke-width="1.5"/>
+            <use href="assets/icons/sprite.svg#management" x="890" y="90" width="40" height="40" color="#2C7A47"/>
+            <text x="915" y="150" text-anchor="middle" font-family="Poppins, Arial, sans-serif" font-weight="700" font-size="15" fill="#1F5C36">Dashboard</text>
+            <text x="915" y="170" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="12" fill="#4C6156">You</text>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ EDGE / FOG / CLOUD ============ -->
+  <section aria-labelledby="tiers-heading" style="background:var(--color-primary-tint)">
+    <div class="container">
+      <div class="section-head section-head--center">
+        <h2 id="tiers-heading">Edge, fog and cloud — in plain language</h2>
+        <p>Three computing tiers, each doing the part it's best at.</p>
+      </div>
+      <div class="grid grid-3">
+        <div class="card">
+          <div class="icon-tile"><svg><use href="assets/icons/sprite.svg#cpu"></use></svg></div>
+          <h3>Edge — the Arduino</h3>
+          <p class="text-muted">The sensor node in the field does the smallest, fastest job: reading soil moisture, temperature, humidity and light, and passing the numbers on immediately. Nothing is analysed here — it just measures and sends.</p>
+        </div>
+        <div class="card">
+          <div class="icon-tile icon-tile--sky"><svg><use href="assets/icons/sprite.svg#wifi"></use></svg></div>
+          <h3>Fog — the Raspberry Pi</h3>
+          <p class="text-muted">A gateway near the field collects readings from every sensor node, filters out noise, and stores them locally if the internet connection drops. When connectivity returns, it forwards a clean batch to the cloud.</p>
+        </div>
+        <div class="card">
+          <div class="icon-tile icon-tile--earth"><svg><use href="assets/icons/sprite.svg#cloud"></use></svg></div>
+          <h3>Cloud — the heavy lifting</h3>
+          <p class="text-muted">The cloud API is where the AI models run, where recommendations are generated, and where every event is hashed onto the blockchain — work that needs more computing power than a field device can offer.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SENSOR TABLE ============ -->
+  <section aria-labelledby="sensors-heading">
+    <div class="container">
+      <div class="section-head">
+        <h2 id="sensors-heading">What's actually measuring your field</h2>
+        <p>The default sensor kit. Enterprise plans can integrate additional or third-party sensors.</p>
+      </div>
+      <div class="compare-scroll">
+        <table class="compare-table">
+          <thead><tr><th>Sensor</th><th>Measures</th><th>Typical placement</th><th>Reports as</th></tr></thead>
+          <tbody>
+            <tr><td>Capacitive soil moisture probe</td><td>Volumetric water content in the root zone</td><td>15&ndash;20cm depth, 1&ndash;3 per field</td><td>Percent (%)</td></tr>
+            <tr><td>DHT22</td><td>Air temperature and relative humidity</td><td>Shaded mount, 1.2m above ground</td><td>&deg;C and %</td></tr>
+            <tr><td>LDR (light-dependent resistor)</td><td>Ambient light intensity</td><td>Open, unshaded point in the field</td><td>Lux (approximate)</td></tr>
+            <tr><td>Rain gauge (optional)</td><td>Rainfall accumulation</td><td>Open area, away from structures</td><td>Millimetres</td></tr>
+            <tr><td>Soil pH probe (Enterprise add-on)</td><td>Soil acidity / alkalinity</td><td>Root zone, per management zone</td><td>pH value</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SECURITY ============ -->
+  <section aria-labelledby="security-heading" style="background:var(--color-primary-tint)">
+    <div class="container">
+      <div class="section-head section-head--center">
+        <h2 id="security-heading">How the ledger stays honest</h2>
+        <p>Traceability only means something if the record can't be quietly edited.</p>
+      </div>
+      <div class="grid grid-3">
+        <div class="card value-card">
+          <div class="icon-tile"><svg><use href="assets/icons/sprite.svg#key"></use></svg></div>
+          <div><h3>Hashing</h3><p class="text-muted">Every sensor batch, recommendation and inventory change is run through a one-way hash function before it's stored, turning the record into a fixed-length fingerprint that changes completely if even one character is altered.</p></div>
+        </div>
+        <div class="card value-card">
+          <div class="icon-tile icon-tile--sky"><svg><use href="assets/icons/sprite.svg#blockchain"></use></svg></div>
+          <div><h3>SHA-256 chaining</h3><p class="text-muted">Each new block includes the hash of the block before it. Altering an old record breaks every hash that follows, which makes tampering detectable rather than invisible.</p></div>
+        </div>
+        <div class="card value-card">
+          <div class="icon-tile icon-tile--earth"><svg><use href="assets/icons/sprite.svg#lock"></use></svg></div>
+          <div><h3>Role-based access</h3><p class="text-muted">Field workers, farm managers and buyers see different views of the same ledger. Only authorised roles can trigger actions; everyone with a link can verify a batch's history.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FAQ ============ -->
+  <section aria-labelledby="faq-heading">
+    <div class="container container--narrow">
+      <div class="section-head section-head--center">
+        <h2 id="faq-heading">Frequently asked questions</h2>
+      </div>
+      <div class="accordion">
+        <details class="accordion-item">
+          <summary>Do I need internet access on my farm to use Farm Metrics? <svg class="chev" aria-hidden="true"><use href="assets/icons/sprite.svg#chevron-down"></use></svg></summary>
+          <div class="accordion-body">No. The Raspberry Pi gateway buffers readings locally for up to 72 hours if your connection drops. Once connectivity returns, everything syncs automatically. You'll see slightly delayed data during an outage rather than missing data.</div>
+        </details>
+        <details class="accordion-item">
+          <summary>What happens if my Raspberry Pi loses connectivity for longer than that? <svg class="chev" aria-hidden="true"><use href="assets/icons/sprite.svg#chevron-down"></use></svg></summary>
+          <div class="accordion-body">The gateway prioritises the most recent readings once its local storage fills up, and flags the gap in your dashboard's history view so you know exactly which period is missing rather than seeing an inaccurate gap-free chart.</div>
+        </details>
+        <details class="accordion-item">
+          <summary>How often do sensors report data? <svg class="chev" aria-hidden="true"><use href="assets/icons/sprite.svg#chevron-down"></use></svg></summary>
+          <div class="accordion-body">Every 30 seconds by default. You can adjust the interval per field — shorter intervals give finer detail but use more battery and data; longer intervals suit low-power, low-connectivity sites.</div>
+        </details>
+        <details class="accordion-item">
+          <summary>What sensors are compatible with Farm Metrics? <svg class="chev" aria-hidden="true"><use href="assets/icons/sprite.svg#chevron-down"></use></svg></summary>
+          <div class="accordion-body">The standard kit ships with a capacitive soil moisture probe, a DHT22 temperature and humidity sensor, and an LDR light sensor, all wired to an Arduino-compatible board. Enterprise customers can integrate additional sensors — including pH probes and third-party weather stations — through our gateway API.</div>
+        </details>
+        <details class="accordion-item">
+          <summary>How does the blockchain traceability actually work? <svg class="chev" aria-hidden="true"><use href="assets/icons/sprite.svg#chevron-down"></use></svg></summary>
+          <div class="accordion-body">Every logged event — a sensor batch, an AI recommendation, an inventory or financial change — is hashed with SHA-256 and appended to a permissioned, append-only ledger. Each new entry references the hash of the one before it, so the chain reveals any attempt to alter history.</div>
+        </details>
+        <details class="accordion-item">
+          <summary>Is my farm data private and secure? <svg class="chev" aria-hidden="true"><use href="assets/icons/sprite.svg#chevron-down"></use></svg></summary>
+          <div class="accordion-body">Yes. Your raw operational and financial data is only visible to roles you authorise. What's shareable with buyers or auditors is the traceability record for a specific batch — not your whole farm's internal data. See our <a href="legal/privacy.html">Privacy Policy</a> for full detail.</div>
+        </details>
+        <details class="accordion-item">
+          <summary>Can I use my own sensors instead of the Farm Metrics kit? <svg class="chev" aria-hidden="true"><use href="assets/icons/sprite.svg#chevron-down"></use></svg></summary>
+          <div class="accordion-body">On Enterprise plans, yes — our gateway API accepts readings from compatible third-party hardware. On Free and Pro plans, the platform is tuned specifically for the standard Arduino-based kit to keep setup simple.</div>
+        </details>
+        <details class="accordion-item">
+          <summary>How accurate are the AI recommendations? <svg class="chev" aria-hidden="true"><use href="assets/icons/sprite.svg#chevron-down"></use></svg></summary>
+          <div class="accordion-body">Recommendations improve as more seasons of data accumulate for your specific fields — early recommendations lean more heavily on general agronomic models, while established fields benefit from your own historical patterns. Every recommendation includes a short explanation of the reasoning behind it, so your team can apply judgement alongside it.</div>
+        </details>
+        <details class="accordion-item">
+          <summary>Do I need technical or programming knowledge to set this up? <svg class="chev" aria-hidden="true"><use href="assets/icons/sprite.svg#chevron-down"></use></svg></summary>
+          <div class="accordion-body">No. The sensor kit arrives pre-configured, and setup is a guided process of placing sensors and powering on the gateway. Our onboarding team supports Pro and Enterprise customers through initial installation.</div>
+        </details>
+        <details class="accordion-item">
+          <summary>What happens to my data if I cancel my subscription? <svg class="chev" aria-hidden="true"><use href="assets/icons/sprite.svg#chevron-down"></use></svg></summary>
+          <div class="accordion-body">You can export your sensor history, inventory records and financial logs as CSV files at any time before cancelling. Blockchain-logged traceability records remain independently verifiable, since they exist on the ledger rather than solely in your account. See our <a href="legal/terms.html">Terms of Service</a> for details.</div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="index.html" class="brand">
+          <svg class="brand-logo" aria-hidden="true"><use href="assets/icons/sprite.svg#logo"></use></svg>
+          <span>Farm Metrics</span>
+        </a>
+        <p>Data-driven farming software for Zimbabwe — precision sensors, AI recommendations and blockchain traceability in one platform.</p>
+        <div class="footer-social">
+          <a href="https://x.com/farmmetrics" aria-label="Farm Metrics on X"><svg><use href="assets/icons/sprite.svg#social-x"></use></svg></a>
+          <a href="https://www.linkedin.com/company/farm-metrics" aria-label="Farm Metrics on LinkedIn"><svg><use href="assets/icons/sprite.svg#social-linkedin"></use></svg></a>
+          <a href="https://facebook.com/farmmetrics" aria-label="Farm Metrics on Facebook"><svg><use href="assets/icons/sprite.svg#social-facebook"></use></svg></a>
+          <a href="https://youtube.com/@farmmetrics" aria-label="Farm Metrics on YouTube"><svg><use href="assets/icons/sprite.svg#social-youtube"></use></svg></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Product</h4>
+        <ul>
+          <li><a href="features.html">Features</a></li>
+          <li><a href="how-it-works.html">How It Works</a></li>
+          <li><a href="pricing.html">Pricing</a></li>
+          <li><a href="dashboard.html">Live Dashboard</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="blog/index.html">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="about.html#careers">Careers</a></li>
+        </ul>
+      </div>
+      <div class="footer-col footer-newsletter">
+        <h4>Field notes</h4>
+        <p style="color:#C7DACD;font-size:var(--fs-sm)">Short, occasional emails on precision agriculture in Zimbabwe. No spam.</p>
+        <form data-newsletter-form>
+          <label class="visually-hidden" for="newsletter-email">Email address</label>
+          <input id="newsletter-email" type="email" name="email" placeholder="you@example.com" required>
+          <button type="submit" class="btn btn-primary">Join</button>
+        </form>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; <span data-year>2026</span> Farm Metrics (Private) Limited. All rights reserved.</p>
+      <ul>
+        <li><a href="legal/privacy.html">Privacy Policy</a></li>
+        <li><a href="legal/terms.html">Terms of Service</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<div class="cookie-banner" role="dialog" aria-label="Cookie notice">
+  <div class="cookie-banner-inner">
+    <p>We use a small number of cookies to keep this site working well and to understand which pages are useful. See our <a href="legal/privacy.html">Privacy Policy</a> for details.</p>
+    <div class="cookie-actions">
+      <button class="btn btn-ghost btn-sm cookie-decline" type="button">Decline</button>
+      <button class="btn btn-primary btn-sm cookie-accept" type="button">Accept</button>
+    </div>
+  </div>
+</div>
+
+<button class="back-to-top" type="button" aria-label="Back to top">
+  <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+</button>
+
+<div id="toast" class="toast" role="status" aria-live="polite">
+  <svg aria-hidden="true"><use href="assets/icons/sprite.svg#check"></use></svg>
+  <span class="toast-message">Done.</span>
+</div>
+
+<script src="js/main.js" defer></script>
+</body>
+</html>

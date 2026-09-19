@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Live Dashboard Demo — Farm Metrics</title>
+<meta name="description" content="Explore a live demo of the Farm Metrics dashboard: real-time telemetry, AI recommendations, inventory, financials and blockchain traceability for a sample farm.">
+<link rel="canonical" href="https://www.farmmetrics.co.zw/dashboard.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Live Dashboard Demo — Farm Metrics">
+<meta property="og:description" content="Telemetry, AI recommendations, inventory, financials and blockchain status for a sample Farm Metrics farm — no sign-up required.">
+<meta property="og:image" content="https://www.farmmetrics.co.zw/assets/images/og-image.svg">
+<meta property="og:url" content="https://www.farmmetrics.co.zw/dashboard.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#1F5C36">
+<link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+<link rel="manifest" href="site.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/variables.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/layout.css">
+<link rel="stylesheet" href="css/components.css">
+<link rel="stylesheet" href="css/pages.css">
+<link rel="stylesheet" href="css/dashboard.css">
+
+<!-- Point this at your real API before deploying. Falls back to simulated
+     data automatically whenever a request fails, so the demo always works. -->
+<script>window.FARM_METRICS_API_BASE = "http://localhost:5000/api";</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="index.html" class="brand" aria-label="Farm Metrics home">
+      <svg class="brand-logo" aria-hidden="true"><use href="assets/icons/sprite.svg#logo"></use></svg>
+      <span>Farm Metrics</span>
+    </a>
+    <nav class="main-nav" aria-label="Primary">
+      <ul>
+        <li><a href="features.html">Features</a></li>
+        <li><a href="how-it-works.html">How It Works</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="dashboard.html" aria-current="page">Dashboard</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="blog/index.html">Blog</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="header-actions">
+      <button class="theme-toggle" type="button" aria-label="Toggle dark mode" aria-pressed="false">
+        <svg class="icon-moon" aria-hidden="true"><use href="assets/icons/sprite.svg#moon"></use></svg>
+        <svg class="icon-sun" aria-hidden="true"><use href="assets/icons/sprite.svg#sun"></use></svg>
+      </button>
+      <a href="dashboard.html" class="btn btn-ghost">Sign In</a>
+      <a href="contact.html" class="btn btn-primary">Book a Demo</a>
+      <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">
+        <svg class="icon-open" aria-hidden="true"><use href="assets/icons/sprite.svg#menu"></use></svg>
+        <svg class="icon-close" aria-hidden="true"><use href="assets/icons/sprite.svg#close"></use></svg>
+      </button>
+    </div>
+  </div>
+  <nav id="mobile-nav" class="mobile-nav" aria-label="Mobile">
+    <ul>
+      <li><a href="features.html">Features</a></li>
+      <li><a href="how-it-works.html">How It Works</a></li>
+      <li><a href="pricing.html">Pricing</a></li>
+      <li><a href="dashboard.html">Dashboard</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="blog/index.html">Blog</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="mobile-cta container">
+      <a href="dashboard.html" class="btn btn-ghost btn-block">Sign In</a>
+      <a href="contact.html" class="btn btn-primary btn-block">Book a Demo</a>
+    </div>
+  </nav>
+</header>
+
+<div id="dashboard-root">
+
+  <div class="dash-header">
+    <div class="container dash-header-inner">
+      <div class="dash-farm">
+        <h1>Green Acres Demo Farm</h1>
+        <p>Mazowe, Zimbabwe &middot; <span id="dash-date">&nbsp;</span></p>
+        <span id="dash-mode-badge" class="dash-mode-badge is-demo"><span class="dot" aria-hidden="true"></span><span class="label">Loading&hellip;</span></span>
+      </div>
+      <div class="dash-actions">
+        <span id="last-refreshed" class="text-muted" style="color:#C7DACD;font-size:var(--fs-xs);align-self:center"></span>
+        <button id="refresh-btn" class="btn btn-outline-white" type="button">Refresh</button>
+        <button id="simulate-btn" class="btn btn-white" type="button">Simulate Cycle</button>
+      </div>
+    </div>
+  </div>
+
+  <main id="main" class="dash-main">
+    <div class="container">
+      <p class="text-muted" style="margin-bottom:var(--space-5)">This is a working demo. Point <code class="font-mono" style="background:var(--color-primary-tint);padding:.15rem .4rem;border-radius:4px">FARM_METRICS_API_BASE</code> at your own backend to replace the simulated data below with live readings.</p>
+
+      <div class="dash-grid">
+
+        <section class="card dash-card dash-card--wide" data-card="telemetry" aria-labelledby="telemetry-h">
+          <div class="dash-card-head">
+            <h2 id="telemetry-h"><svg aria-hidden="true"><use href="assets/icons/sprite.svg#precision"></use></svg>Latest Telemetry</h2>
+            <span class="dash-card-sub">Per field</span>
+          </div>
+          <div data-card-body="telemetry">
+            <div class="skeleton skeleton-line w-80"></div>
+            <div class="skeleton skeleton-line w-60"></div>
+            <div class="skeleton skeleton-line w-40"></div>
+          </div>
+        </section>
+
+        <section class="card dash-card" data-card="blockchain" aria-labelledby="chain-h">
+          <div class="dash-card-head">
+            <h2 id="chain-h"><svg aria-hidden="true"><use href="assets/icons/sprite.svg#blockchain"></use></svg>Blockchain Status</h2>
+          </div>
+          <div data-card-body="blockchain">
+            <div class="skeleton skeleton-line w-40"></div>
+            <div class="skeleton skeleton-line w-80"></div>
+          </div>
+        </section>
+
+        <section class="card dash-card dash-card--wide" data-card="recommendations" aria-labelledby="rec-h">
+          <div class="dash-card-head">
+            <h2 id="rec-h"><svg aria-hidden="true"><use href="assets/icons/sprite.svg#ai"></use></svg>AI Recommendations</h2>
+            <span class="dash-card-sub">Newest first</span>
+          </div>
+          <div data-card-body="recommendations">
+            <div class="skeleton skeleton-line w-80"></div>
+            <div class="skeleton skeleton-line w-60"></div>
+          </div>
+        </section>
+
+        <section class="card dash-card" data-card="inventory" aria-labelledby="inv-h">
+          <div class="dash-card-head">
+            <h2 id="inv-h"><svg aria-hidden="true"><use href="assets/icons/sprite.svg#management"></use></svg>Inventory</h2>
+          </div>
+          <div data-card-body="inventory">
+            <div class="skeleton skeleton-line w-80"></div>
+            <div class="skeleton skeleton-line w-60"></div>
+          </div>
+        </section>
+
+        <section class="card dash-card" aria-labelledby="fin-h" data-card="financials">
+          <div class="dash-card-head">
+            <h2 id="fin-h"><svg aria-hidden="true"><use href="assets/icons/sprite.svg#target"></use></svg>Financials</h2>
+          </div>
+          <div data-card-body="financials">
+            <div class="skeleton skeleton-line w-60"></div>
+            <div class="skeleton skeleton-line w-40"></div>
+          </div>
+        </section>
+
+        <section class="card dash-card dash-card--wide" aria-labelledby="log-h">
+          <div class="dash-card-head">
+            <h2 id="log-h"><svg aria-hidden="true"><use href="assets/icons/sprite.svg#clock"></use></svg>Last Actions</h2>
+          </div>
+          <ul id="log-list" class="log-list"></ul>
+        </section>
+
+      </div>
+    </div>
+  </main>
+</div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="index.html" class="brand">
+          <svg class="brand-logo" aria-hidden="true"><use href="assets/icons/sprite.svg#logo"></use></svg>
+          <span>Farm Metrics</span>
+        </a>
+        <p>Data-driven farming software for Zimbabwe — precision sensors, AI recommendations and blockchain traceability in one platform.</p>
+        <div class="footer-social">
+          <a href="https://x.com/farmmetrics" aria-label="Farm Metrics on X"><svg><use href="assets/icons/sprite.svg#social-x"></use></svg></a>
+          <a href="https://www.linkedin.com/company/farm-metrics" aria-label="Farm Metrics on LinkedIn"><svg><use href="assets/icons/sprite.svg#social-linkedin"></use></svg></a>
+          <a href="https://facebook.com/farmmetrics" aria-label="Farm Metrics on Facebook"><svg><use href="assets/icons/sprite.svg#social-facebook"></use></svg></a>
+          <a href="https://youtube.com/@farmmetrics" aria-label="Farm Metrics on YouTube"><svg><use href="assets/icons/sprite.svg#social-youtube"></use></svg></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Product</h4>
+        <ul>
+          <li><a href="features.html">Features</a></li>
+          <li><a href="how-it-works.html">How It Works</a></li>
+          <li><a href="pricing.html">Pricing</a></li>
+          <li><a href="dashboard.html">Live Dashboard</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="blog/index.html">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="about.html#careers">Careers</a></li>
+        </ul>
+      </div>
+      <div class="footer-col footer-newsletter">
+        <h4>Field notes</h4>
+        <p style="color:#C7DACD;font-size:var(--fs-sm)">Short, occasional emails on precision agriculture in Zimbabwe. No spam.</p>
+        <form data-newsletter-form>
+          <label class="visually-hidden" for="newsletter-email">Email address</label>
+          <input id="newsletter-email" type="email" name="email" placeholder="you@example.com" required>
+          <button type="submit" class="btn btn-primary">Join</button>
+        </form>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; <span data-year>2026</span> Farm Metrics (Private) Limited. All rights reserved.</p>
+      <ul>
+        <li><a href="legal/privacy.html">Privacy Policy</a></li>
+        <li><a href="legal/terms.html">Terms of Service</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<div class="cookie-banner" role="dialog" aria-label="Cookie notice">
+  <div class="cookie-banner-inner">
+    <p>We use a small number of cookies to keep this site working well and to understand which pages are useful. See our <a href="legal/privacy.html">Privacy Policy</a> for details.</p>
+    <div class="cookie-actions">
+      <button class="btn btn-ghost btn-sm cookie-decline" type="button">Decline</button>
+      <button class="btn btn-primary btn-sm cookie-accept" type="button">Accept</button>
+    </div>
+  </div>
+</div>
+
+<button class="back-to-top" type="button" aria-label="Back to top">
+  <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+</button>
+
+<div id="toast" class="toast" role="status" aria-live="polite">
+  <svg aria-hidden="true"><use href="assets/icons/sprite.svg#check"></use></svg>
+  <span class="toast-message">Done.</span>
+</div>
+
+<script src="js/main.js" defer></script>
+<script src="js/mockData.js" defer></script>
+<script src="js/dashboard.js" defer></script>
+</body>
+</html>
